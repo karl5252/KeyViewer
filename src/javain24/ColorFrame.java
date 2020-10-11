@@ -22,18 +22,15 @@ public class ColorFrame extends JFrame {
         blue = new JButton("Blue");
         add(blue);
 
-        ActionListener act = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == red) {
-                    getContentPane().setBackground((Color.RED));
-                }
-                if (e.getSource() == green) {
-                    getContentPane().setBackground((Color.GREEN));
-                }
-                if (e.getSource() == blue) {
-                    getContentPane().setBackground((Color.BLUE));
-                }
+        ActionListener act = (event) -> {
+            if (event.getSource() == red) {
+                getContentPane().setBackground((Color.RED));
+            }
+            if (event.getSource() == green) {
+                getContentPane().setBackground((Color.GREEN));
+            }
+            if (event.getSource() == blue) {
+                getContentPane().setBackground((Color.BLUE));
             }
         };
         red.addActionListener(act);

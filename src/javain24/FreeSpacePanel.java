@@ -8,18 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class FreeSpacePanel extends JFrame {
+public class FreeSpacePanel extends JPanel {
 
-    JLabel spaceLabel = new JLabel();
+    JLabel spaceLabel = new JLabel("Disk space: ");
     JLabel space = new JLabel();
 
-    public FreeSpacePanel(){
+    public FreeSpacePanel() {
         super();
-        setLookAndFeel();
-        setSize(450,200);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        FlowLayout flowLayout = new FlowLayout();
-        setLayout(flowLayout);
         add(spaceLabel);
         add(space);
         try {
@@ -29,20 +24,10 @@ public class FreeSpacePanel extends JFrame {
             e.printStackTrace();
 
         }
-
-        setVisible(true);
     }
 
-    private void setLookAndFeel() {
-        try {
-            UIManager.setLookAndFeel(
-                    "javax.swing.plaf.nimbus.NimbusLookAndFeel"
-            );
-        }catch(Exception e){
-            System.out.println(e.toString());
-        }
-    }
-    private void setValue() throws IOException{
+
+    private final void setValue() throws IOException{
         Path current = Paths.get("");
         FileStore store = Files.getFileStore(current);
 
@@ -56,7 +41,6 @@ public class FreeSpacePanel extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-        new FreeSpacePanel();
-    }
+
 }
+
